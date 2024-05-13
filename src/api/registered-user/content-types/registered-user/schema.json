@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "registered_users",
+  "info": {
+    "singularName": "registered-user",
+    "pluralName": "registered-users",
+    "displayName": "RegisteredUser"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "dateOfBirth": {
+      "type": "date",
+      "required": true
+    },
+    "organization": {
+      "type": "string",
+      "required": true
+    },
+    "expertiseLevel": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}
