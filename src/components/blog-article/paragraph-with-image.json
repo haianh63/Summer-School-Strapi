@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_block_article_paragraph_with_images",
+  "info": {
+    "displayName": "paragraphWithImage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "paragraph": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isLandscape": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "imageShowsRight": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "imageCaption": {
+      "type": "string"
+    }
+  }
+}
