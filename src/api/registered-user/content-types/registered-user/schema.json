@@ -4,7 +4,8 @@
   "info": {
     "singularName": "registered-user",
     "pluralName": "registered-users",
-    "displayName": "RegisteredUser"
+    "displayName": "RegisteredUser",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -27,11 +28,19 @@
       "type": "string",
       "required": true
     },
-    "expertiseLevel": {
-      "type": "string"
-    },
     "message": {
       "type": "text"
+    },
+    "expertiseLevel": {
+      "type": "enumeration",
+      "enum": [
+        "Novice",
+        "Intermediate",
+        "Advanced",
+        "Expert"
+      ],
+      "required": true,
+      "default": "Novice"
     }
   }
 }

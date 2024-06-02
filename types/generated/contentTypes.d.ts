@@ -760,6 +760,7 @@ export interface ApiRegisteredUserRegisteredUser extends Schema.CollectionType {
     singularName: 'registered-user';
     pluralName: 'registered-users';
     displayName: 'RegisteredUser';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -769,8 +770,12 @@ export interface ApiRegisteredUserRegisteredUser extends Schema.CollectionType {
     lastName: Attribute.String & Attribute.Required;
     dateOfBirth: Attribute.Date & Attribute.Required;
     organization: Attribute.String & Attribute.Required;
-    expertiseLevel: Attribute.String;
     message: Attribute.Text;
+    expertiseLevel: Attribute.Enumeration<
+      ['Novice', 'Intermediate', 'Advanced', 'Expert']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Novice'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
