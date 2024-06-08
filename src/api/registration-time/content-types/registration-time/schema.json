@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "registration_times",
+  "info": {
+    "singularName": "registration-time",
+    "pluralName": "registration-times",
+    "displayName": "Registration Time"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Open": {
+      "type": "datetime"
+    },
+    "End": {
+      "type": "datetime"
+    }
+  }
+}

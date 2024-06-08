@@ -41,7 +41,7 @@ const HomePage =  () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await request("/content-manager/collection-types/api::registered-user.registered-user", {
+      const response = await request("/content-manager/collection-types/api::registered-user.registered-user?page=1&pageSize=100", {
         method: "GET"
       }); 
       setData(processData(response.results));

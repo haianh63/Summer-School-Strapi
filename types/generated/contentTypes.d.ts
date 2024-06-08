@@ -794,6 +794,38 @@ export interface ApiRegisteredUserRegisteredUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiRegistrationTimeRegistrationTime
+  extends Schema.CollectionType {
+  collectionName: 'registration_times';
+  info: {
+    singularName: 'registration-time';
+    pluralName: 'registration-times';
+    displayName: 'Registration Time';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Open: Attribute.DateTime;
+    End: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::registration-time.registration-time',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::registration-time.registration-time',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Shared {
     export interface ContentTypes {
@@ -813,6 +845,7 @@ declare module '@strapi/strapi' {
       'api::blog-article.blog-article': ApiBlogArticleBlogArticle;
       'api::info-block.info-block': ApiInfoBlockInfoBlock;
       'api::registered-user.registered-user': ApiRegisteredUserRegisteredUser;
+      'api::registration-time.registration-time': ApiRegistrationTimeRegistrationTime;
     }
   }
 }
