@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Layout } from '@strapi/design-system';
 // import PropTypes from 'prop-types';
 import pluginId from '../../pluginId';
+import * as XLSX from 'xlsx'
 import  { request } from '@strapi/helper-plugin'
 import { Pie, Bar } from 'react-chartjs-2';
 import {
@@ -54,6 +55,15 @@ const HomePage =  () => {
   return (
     <div style={{margin: "30px"}}>
       <div style={{display:'flex', flexDirection: 'column', gap: '10px', width: '350px'}}>
+        <Button variant="default" size="L" onClick={
+          () => {
+            const formattedData = formatData(data);
+            exportData(formattedData);
+          }
+        }>
+          Export registered user data to excel
+        </Button>
+
         <Button variant="default" size="L" onClick={() => setCharts([...charts, drawBarChartOfExpertiseLevel(data)])}>
           Get number of people of each expertise level
         </Button>
@@ -333,4 +343,27 @@ function drawPieChartOfAge(age) {
       };
     
     return chart;
+}
+
+function formatData(data) {
+  const result = [];
+  for (let i = 0; i < data.firstName.length; i++) {
+    result.push({
+      firstName: data.firstName[i],
+      lastName: data.lastName[i],
+      dateOfBirth: data.dateOfBirth[i],
+      organization: data.organization[i],
+      expertiseLevel: data.expertiseLevel[i],
+      message: data.message[i],
+    });
+  }
+  console.log(result);
+  return result;
+}
+
+function exportData(data) {
+  var wb = XLSX.utils.book_new();
+  var ws = XLSX.utils.json_to_sheet(data);
+  XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+  XLSX.writeFile(wb, "registered-users.xlsx");
 }
